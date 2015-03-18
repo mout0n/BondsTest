@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=gbk" />
+		<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico" />
+		
+		<title>中债估值查询</title>
+		<style type="text/css" title="currentStyle">
+			@import "css/demo_page.css";
+			@import "css/jquery.dataTables.css";
+		</style>
+		<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="js/dataTables.scroller.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+		$('#example').dataTable( {
+		"ajax":{
+				"url": "convertcsv.json",
+				"dataSrc": ""
+				},
+		"scrollY": "300px",
+        "dom": "frtiS",
+		"deferRender": true,
+		scrollCollapse: true,
+		"oLanguage": {
+			"sLengthMenu": "显示 _MENU_ 条结果",
+			"sZeroRecords": "没有匹配结果",
+			"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+			"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+			"sInfoFiltered": "(由 _MAX_ 项结果检索)",
+			"sSearch": "搜索：",
+			"oPaginate": {  
+                    "sFirst": "首页",  
+                    "sPrevious": "上页",
+                    "sNext": "下页",  
+                    "sLast": "末页"  
+                }, 
+			"sEmptyTable":     "表中数据为空",  
+			"sProcessing": "处理中..."
+			}
+			} );
+		} );
+		</script>
+	</head>
+	<body id="dt_example">
+		<div id="container">
+			<div class="full_width big">
+				每日中债估值查询（测试版）
+			</div>
+			
+			<h1>介绍</h1>
+			<p>中债估值查询页面，检索工具已进行优化，可在搜索框进行快速精确检索，通过简称、代码或者是精确的数值均可。</p>
+			<p>现有Bug：</p>
+				<ul class="markdown">
+				<li>仅为本地版，如需更新估值，需替换掉文件夹中“convertcsv.json”文件。</li>
+				<li>数据库中未对银行间和交易所债券进行区分，部分债券信息搜索可能会有重复。</li>
+				<li>交易所债券通过代码可能搜索不到，尽量用名称搜索。</li>
+				<li>IE浏览器测试有效（需允许阻止内容），Chrome浏览器暂时无法读取数据，火狐浏览器效果最佳，其它浏览器为测试。</li>
+				</ul>
+			<h1>中债估值</h1>
+			<div id="demo">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+	<thead>
+		<tr>
+                <th>债券简称</th>
+                <th>债券代码</th>
+                <th>估值日期</th>
+				<th>待偿期(年)</th>
+                <th>估值净价(元)</th>
+                <th>估值收益率(％)</th>
+                <th>估值修正久期</th>
+				<th>估值凸性</th>
+                <th>估值基点价值</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+                <th>债券简称</th>
+                <th>债券代码</th>
+                <th>估值日期</th>
+				<th>待偿期(年)</th>
+                <th>估值净价(元)</th>
+                <th>估值收益率(％)</th>
+                <th>估值修正久期</th>
+				<th>估值凸性</th>
+                <th>估值基点价值</th>
+		</tr>
+	</tfoot>
+	</table>
+</body>
+</html>
